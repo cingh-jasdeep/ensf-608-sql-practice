@@ -1,0 +1,218 @@
+-- CREATE DATABASE P1UniversityDB;
+-- CREATE TABLE Student(
+--     StudentID INT NOT NULL PRIMARY KEY,
+--     Name VARCHAR(25) NOT NULL,
+--     Address VARCHAR (100) NOT NULL
+-- );
+-- CREATE TABLE Course(
+--     CourseID INT NOT NULL PRIMARY KEY,
+--     Name VARCHAR(50) NOT NULL,
+--     Code VARCHAR(10) NOT NULL,
+--     Schedule VARCHAR(50) NOT NULL
+-- );
+-- CREATE TABLE Professor(
+--     ProfessorID INT NOT NULL PRIMARY KEY,
+--     ProfessorContract VARCHAR(30) NOT NULL,
+--     ProfessorBackground VARCHAR(50) NOT NULL
+-- );
+-- CREATE TABLE Enroll(
+--     StudentID INT NOT NULL,
+--     CourseID INT NOT NULL,
+--     FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
+--     FOREIGN KEY (CourseID) REFERENCES Course(CourseID),
+--     PRIMARY KEY (StudentID, CourseID)
+-- );
+-- CREATE TABLE Teaches(
+--     ProfessorID INT NOT NULL,
+--     CourseID INT NOT NULL,
+--     FOREIGN KEY (ProfessorID) REFERENCES Professor(ProfessorID),
+--     FOREIGN KEY (CourseID) REFERENCES Course(CourseID),
+--     PRIMARY KEY (ProfessorID, CourseID)
+-- );
+-- Manipulating Data
+-- INSERT INTO Student(StudentId, Name, Address)
+-- VALUES(1, 'Steve Rogers', '123 Main St')
+-- INSERT INTO Student(StudentId, Name, Address)
+-- VALUES
+--     (2, 'Tony Stark', '200 Stark Tower'),
+--     (3,'Natasha Romanoff', '789 Spy Lane'),
+--     (4, 'Bruce Banner', '456 Science Lab'),
+--     (5, 'Peter Parker', '987 Queens Blvd'),
+--     (6, 'Wanda Maximoff', '654 Chaos Road'),
+--     (7, 'Stephen Strange', '321 Bleecker St'),
+--     (8, 'TChalla', '999 Wakanda Palace');
+-- INSERT INTO Course (CourseID, Name, Code, Schedule)
+-- VALUES
+--     (1, 'Physics of Superheroes', 'PHY101', 'Mon-Wed 9:00-10:30'),
+--     (2, 'Advanced Combat Tactics', 'COM201', 'Tue-Thu 11:00-12:30'),
+--     (3, 'Mystical Arts', 'MAG301', 'Fri 14:00-16:00');
+-- INSERT INTO Professor (ProfessorID, ProfessorContract, ProfessorBackground)
+-- VALUES
+--     (1, 'Full-Time', 'Physics'),
+--     (2, 'Part-Time', 'Computer Science'),
+--     (3, 'Full-Time', 'Biology'),
+--     (4, 'Full-Time', 'Engineering'),
+--     (5, 'Part-Time', 'Mystical Arts');
+-- INSERT INTO Enroll (StudentID, CourseID)
+-- VALUES
+--     (1, 1), -- Steve Rogers -> Physics of Superheroes 
+--     (2, 2), -- Tony Stark -> Advanced Combat Tactics 
+--     (3, 3), -- Natasha Romanoff -> Mystical Arts
+--     (4, 1),  -- Bruce Banner -> Physics of Superheroes
+--     (5, 2),  -- Peter Parker -> Advanced Combat Tactics 
+--     (6, 3), -- Wanda Maximoff - Mystical Arts
+--     (7, 1), -- Stephen Strange -> Physics of Superheroes
+--     (8, 3); -- TChalla → Mystical Arts
+-- INSERT INTO Teaches (ProfessorID, CourseID)
+-- VALUES
+--     (1, 1), -- Physics of Superheroes taught by Professor 1
+--     (2, 2), -- Advanced Combat Tactics taught by Professor 2
+--     (3, 3), -- Mystical Arts taught by Professor 3
+--     (4, 2), -- Advanced Combat Tactics also taught by Professor 4
+--     (5, 3); -- Mystical Arts also taught by Professor
+-- SELECT
+-- SELECT Name, Address
+-- FROM Student
+-- WHERE StudentID = 1;
+-- SELECT * FROM STUDENT;
+-- SELECT Name, Address FROM STUDENT;
+-- SELECT * FROM STUDENT
+-- WHERE StudentID = 7;
+-- SELECT Name, Address FROM STUDENT 
+-- WHERE Address LIKE '%Main St%';
+-- SELECT Name FROM STUDENT
+-- WHERE Name LIKE 'S%';
+-- SELECT Name, Address FROM STUDENT
+-- WHERE Address NOT LIKE '%Queens%';
+-- SELECT * FROM STUDENT
+-- WHERE StudentID BETWEEN 1 AND 5;
+-- SELECT * FROM STUDENT
+-- WHERE StudentID = 1 OR Name = 'Tony Stark';
+-- SELECT * FROM STUDENT
+-- WHERE Name LIKE 'S%' AND Address NOT LIKE '%Science%';
+-- SELECT * FROM Professor
+-- WHERE ProfessorID > 3;
+-- UPDATE
+-- UPDATE Student
+-- SET Address = '456 Science Ave'
+-- WHERE StudentID = 1;
+-- SELECT * FROM Student
+-- WHERE StudentID = 1;
+-- UPDATE COURSE
+-- SET Name = 'Advanced Physics'
+-- WHERE CourseID = 1;
+-- SELECT * FROM COURSE
+-- WHERE CourseID = 1;
+-- UPDATE PROFESSOR
+-- SET ProfessorContract = 'Full-Time'
+-- WHERE ProfessorID = 2;
+-- SELECT * FROM PROFESSOR
+-- WHERE ProfessorID = 2;
+-- UPDATE STUDENT
+-- SET Name = 'Peter Parker', Address = '789 Queens Blvd'
+-- WHERE StudentID = 5;
+-- SELECT * FROM Student
+-- WHERE StudentID = 5;
+-- DELETE 
+-- DELETE FROM ENROLL
+-- WHERE StudentID = 1;
+-- DELETE FROM STUDENT
+-- WHERE StudentID = 1;
+-- SELECT * FROM STUDENT;
+-- ALTER TABLE Student
+--     ADD Age INT NOT NULL;
+-- UPDATE STUDENT
+-- SET Age = FLOOR(RAND()*18 + 18)
+-- SELECT * FROM STUDENT;
+-- ALTER TABLE Professor
+--     ADD YearsOfExperience INT NOT NULL;
+-- UPDATE Professor
+-- SET YearsOfExperience = FLOOR(RAND()*5 + 5);
+-- SELECT * FROM PROFESSOR;
+-- ALTER TABLE COURSE
+--     ADD Credits INT NOT NULL;
+-- ALTER TABLE COURSE
+--     ADD Hours DOUBLE NOT NULL;
+-- UPDATE COURSE
+-- SET Credits = FLOOR(RAND()*4 + 1);
+-- UPDATE COURSE
+-- SET Hours = 1.5
+-- WHERE CourseID = 1;
+-- UPDATE COURSE
+-- SET Hours = 1.5
+-- WHERE CourseID = 2;
+-- UPDATE COURSE
+-- SET Hours = 2
+-- WHERE CourseID = 3;
+-- SELECT * FROM COURSE;
+-- SELECT
+--     Name,
+--     Age
+-- FROM
+--     Student;
+-- SELECT
+--     ProfessorID,
+--     YearsOfExperience
+-- FROM
+--     Professor;
+-- SELECT
+--     *
+-- FROM
+--     Student
+-- WHERE
+--     Age = 25;
+-- SELECT
+--     *
+-- FROM
+--     Course
+-- WHERE
+--     Credits > 3;
+-- SELECT
+--     *
+-- FROM
+--     Course
+-- WHERE
+--     Hours = 4.0;
+-- SELECT
+--     Name
+-- FROM
+--     Student
+-- WHERE
+--     Age <= 20;
+-- SELECT
+--     ProfessorID,
+--     YearsOfExperience
+-- FROM
+--     Professor
+-- WHERE
+--     YearsOfExperience >= 10;
+-- ALTER TABLE Professor ADD Name VARCHAR(25) NOT NULL;
+-- UPDATE Professor
+-- SET
+--     Name = 'Scott Verma'
+-- WHERE
+--     ProfessorId = 1;
+-- UPDATE Professor
+-- SET
+--     Name = 'Shahid Khan'
+-- WHERE
+--     ProfessorId = 2;
+-- UPDATE Professor
+-- SET
+--     Name = 'Pammy Brar'
+-- WHERE
+--     ProfessorId = 3;
+-- UPDATE Professor
+-- SET
+--     Name = 'Luv Kumar'
+-- WHERE
+--     ProfessorId = 4;
+-- UPDATE Professor
+-- SET
+--     Name = 'Jabartor Singh'
+-- WHERE
+--     ProfessorId = 5;
+-- SELECT
+--     *
+-- FROM
+--     Professor;
